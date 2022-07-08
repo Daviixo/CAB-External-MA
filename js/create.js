@@ -82,7 +82,7 @@ function createTemplate(){
     // We'll now add the correct format to the "TO" time.
     // =========== THIS IS JUST TO HELP ME IDENTIFY STUFF =================
 
-    console.log("\n NEW STUFF\n")
+    console.log("\nNEW STUFF\n")
 
     var new_date = new Date(createNewDate);
     new_currentMonth = new_date.getMonth();
@@ -144,11 +144,9 @@ function createTemplate(){
     var new_wd = new Intl.DateTimeFormat('en', { weekday: 'long' }).format(new_d);
     var new_ti = new Intl.DateTimeFormat('en', { hour: 'numeric', hour12: true, minute: '2-digit'}).format(new_d);
 
-    console.log("NEW_D FINAL: " + new_d);
-
     console.log("new_Final format: " + new_mo + " " + new_da + ", " + new_ye + ", " + new_ti + " UTC");
 
-    alert("MA: " + mo + " " + da + ", " + ye + ", " + ti + " UTC to " + new_ti + " UTC")
+    //alert("MA: " + mo + " " + da + ", " + ye + ", " + ti + " UTC to " + new_ti + " UTC")
 
     var selected = [];
     for (var option of document.getElementById('products').options)
@@ -158,9 +156,14 @@ function createTemplate(){
         }
     }
 
+    console.log("MA: " + mo + " " + da + ", " + ye + ", " + ti + " UTC to " + new_ti + " UTC");
+
+    maDate = "MA: " + mo + " " + da + ", " + ye + ", " + ti + " UTC to " + new_ti + " UTC"
+
+    console.log("These are the products selected: " + selected);
 
     var winPrint = window.open('MA', '', 'left=0,top=0,width=450,height=800,toolbar=0,scrollbars=0,status=0');
-    winPrint.document.write('<title>CAB MA Template</title><br><strong> CAB MA Template</strong><br><br>'
+    winPrint.document.write('<title>CAB MA Template</title><br><strong> CAB MA Template</strong><br><br>' + maDate
 
     );
 
