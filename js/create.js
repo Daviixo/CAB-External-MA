@@ -4,6 +4,8 @@ function createTemplate(){
 
     var getDate = document.getElementById("dateTime").value;
     var getMinutes = document.getElementById("duration").value;
+    var getDowntime = document.getElementById("downtime").value;
+    var getExpectation = document.getElementById("expect").value;
 
     getMinutes = parseInt(getMinutes);
 
@@ -158,13 +160,39 @@ function createTemplate(){
 
     console.log("MA: " + mo + " " + da + ", " + ye + ", " + ti + " UTC to " + new_ti + " UTC");
 
-    maDate = "MA: " + mo + " " + da + ", " + ye + ", " + ti + " UTC to " + new_ti + " UTC"
+    maDate = mo + " " + da + ", " + ye + ", " + ti + " UTC to " + new_ti + " UTC"
 
     console.log("These are the products selected: " + selected);
 
-    var winPrint = window.open('MA', '', 'left=0,top=0,width=450,height=800,toolbar=0,scrollbars=0,status=0');
-    winPrint.document.write('<title>CAB MA Template</title><br><strong> CAB MA Template</strong><br><br>' + maDate
+    finalDowntime = timeConverter(getDowntime);
 
+    // ====== This section is to create the final template, which should have the below ==========
+
+    // As part of our commitment to provide exceptional service and reliability to our customers, 
+    // GoToMeeting, GoToWebinar, GoToTraining, and OpenVoice will be conducting service maintenance on the 
+    // following date and time listed below. Our team will be taking all appropriate actions to minimize 
+    // service interruptions during this event.
+
+    // <b>Date and Time:</b> June 18, 2022, 03:00 AM UTC to 04:00 AM UTC
+
+    // <b>Purpose:</b> This maintenance is to ensure and maintain system performance and stability.
+
+    // <b>Duration:</b> All maintenance will be performed within the 1-hour maintenance window.
+
+    // <b>What to expect:</b> During the maintenance window GoToMeeting, GoToWebinar, GoToTraining and OpenVoice customers will experience a 10 minute downtime 
+    // when trying access the Billing Center or performing billing-related activities like seat increase, new subscription purchases and trial to paid conversions.
+
+    // We would like to thank you for your patience and understanding during this time period
+
+    var winPrint = window.open('MA', '', 'left=0,top=0,width=450,height=800,toolbar=0,scrollbars=0,status=0');
+    winPrint.document.write('<title>CAB MA Template</title><strong> CAB MA Template</strong><br><br>' +
+    'As part of our commitment to provide exceptional service and reliability to our customers, ' + selected + 
+    ' will be conducting service maintenance on the following date and time listed below. Our team will be taking all appropriate actions to minimize' +
+    ' service interruptions during this event.<br><br>' + 
+    '<strong>Date and Time: </strong>' + maDate + '<br><br><strong>Purpose: </strong>This maintenance is to ensure and maintain system performance and stability.' +
+    '<br><br><strong>Duration: </strong>' + 'All maintenance will be performed within the ' + finalDowntime + ' maintenance window.' +
+    '<br><br><strong>What to expect: </strong>During the maintenance window ' + selected + ' customers will experience a ' + finalDowntime + ' downtime ' + getExpectation +
+    '<br><br>We would like to thank you for your patience and understanding during this time period.'
     );
 
 }
@@ -174,5 +202,24 @@ function addHours(change_date, addMinutes){
     var newDate = new Date(change_date);
     newDate.setMinutes(newDate.getMinutes() + addMinutes);
     return newDate;
+
+}
+
+function timeConverter(minutes){
+
+    var num = minutes;
+    var hours = (num / 60);
+    var rhours = Math.floor(hours);
+    var minutes = (hours - rhours) * 60;
+    var rminutes = Math.round(minutes);
+
+    if(minutes === 0){
+        return rhours + "-hour";
+
+    }else{
+        return rhours + "-hour and " + rminutes + "-minute";
+    }
+
+    
 
 }
