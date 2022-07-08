@@ -4,7 +4,6 @@ function createTemplate(){
 
     var getDate = document.getElementById("dateTime").value;
     var getMinutes = document.getElementById("duration").value;
-    var getDowntime = document.getElementById("downtime").value;
     var getExpectation = document.getElementById("expect").value;
 
     getMinutes = parseInt(getMinutes);
@@ -154,9 +153,13 @@ function createTemplate(){
     for (var option of document.getElementById('products').options)
     {
         if (option.selected) {
-            selected.push(" " + option.value);
+            selected.push(option.value);
         }
     }
+
+    // Let's fix our list
+
+    fixedProducts = fixProducts(selected);
 
     console.log("MA: " + mo + " " + da + ", " + ye + ", " + ti + " UTC to " + new_ti + " UTC");
 
@@ -164,7 +167,7 @@ function createTemplate(){
 
     console.log("These are the products selected: " + selected);
 
-    finalDowntime = timeConverter(getDowntime);
+    finalDowntime = timeConverter(getMinutes);
 
     // ====== This section is to create the final template, which should have the below ==========
 
@@ -185,13 +188,13 @@ function createTemplate(){
     // We would like to thank you for your patience and understanding during this time period
 
     var winPrint = window.open('MA', '', 'left=0,top=0,width=450,height=800,toolbar=0,scrollbars=0,status=0');
-    winPrint.document.write('<title>CAB MA Template</title><strong> CAB MA Template</strong><br><br>' +
-    'As part of our commitment to provide exceptional service and reliability to our customers, ' + selected + 
+    winPrint.document.write('<title>CAB MA Template</title><strong> CAB MA Template</strong><br><br>' + "<strong>" + fixedProducts + ' - Maintenance</strong><br><br>' + 
+    'As part of our commitment to provide exceptional service and reliability to our customers, ' + fixedProducts + 
     ' will be conducting service maintenance on the following date and time listed below. Our team will be taking all appropriate actions to minimize' +
     ' service interruptions during this event.<br><br>' + 
     '<strong>Date and Time: </strong>' + maDate + '<br><br><strong>Purpose: </strong>This maintenance is to ensure and maintain system performance and stability.' +
     '<br><br><strong>Duration: </strong>' + 'All maintenance will be performed within the ' + finalDowntime + ' maintenance window.' +
-    '<br><br><strong>What to expect: </strong>During the maintenance window ' + selected + ' customers will experience a ' + finalDowntime + ' downtime ' + getExpectation +
+    '<br><br><strong>What to expect: </strong>During the maintenance window ' + fixedProducts + ' customers will experience ' + getExpectation +
     '<br><br>We would like to thank you for your patience and understanding during this time period.'
     );
 
@@ -219,5 +222,37 @@ function timeConverter(minutes){
     }else{
         return rhours + "-hour and " + rminutes + "-minute";
     }
+
+}
+
+function fixProducts(products){
+
+    var listProducts = products;
+    var productsFinal = "";
+
+    console.log("Last element " + listProducts[listProducts.length -1]);
+    console.log("Last element " + listProducts[listProducts.length -2]);
+
+    var penUltProduct = listProducts[listProducts.length -2];
+    var lastProduct = listProducts[listProducts.length -1];
+    
+    for (i in listProducts){
+
+        console.log("Product: " + listProducts[i]);
+        
+        if (listProducts[i] === lastProduct){
+
+            productsFinal = productsFinal + " and " + listProducts[i];
+        }
+        else if (listProducts[i] === penUltProduct) {
+            productsFinal = productsFinal + listProducts[i];
+        }else{
+            productsFinal = productsFinal + listProducts[i] + ", ";
+        }
+        
+    }
+
+    console.log("Products Final: " + productsFinal);
+    return productsFinal;
 
 }
