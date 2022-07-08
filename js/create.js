@@ -220,6 +220,4 @@ function timeConverter(minutes){
         return rhours + "-hour and " + rminutes + "-minute";
     }
 
-    
-
 }
