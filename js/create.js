@@ -188,7 +188,7 @@ function createTemplate(){
     // We would like to thank you for your patience and understanding during this time period
 
     var winPrint = window.open('MA', '', 'left=0,top=0,width=450,height=800,toolbar=0,scrollbars=0,status=0');
-    winPrint.document.write('<title>CAB MA Template</title><strong> CAB MA Template</strong><br><br>' + "<strong>" + fixedProducts + ' - Maintenance</strong><br><br>' + 
+    winPrint.document.write('<title>CAB - External MA</title><strong>CAB - External MA</strong><br><br>' + "<strong>" + fixedProducts + ' - Maintenance</strong><br><br>' + 
     'As part of our commitment to provide exceptional service and reliability to our customers, ' + fixedProducts + 
     ' will be conducting service maintenance on the following date and time listed below. Our team will be taking all appropriate actions to minimize' +
     ' service interruptions during this event.<br><br>' + 
