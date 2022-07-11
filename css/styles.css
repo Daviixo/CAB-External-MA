@@ -82,7 +82,7 @@ body {
     text-align: center;
   }
   
-  aligncenter {
+  .aligncenter {
     text-align: center;
     width: 50%;
     margin: 10px auto 20px;
@@ -154,4 +154,5 @@ body {
     font-size: medium;
     white-space:normal;
     font-weight: bold;
+    
 }
