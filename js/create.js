@@ -172,12 +172,15 @@ function fixProducts(products){
     
     for (i in listProducts){
 
-        if (listProducts[i] === lastProduct){
+        if(listProducts.length === 1){
+            productsFinal = listProducts[i];
 
+        }else if (listProducts[i] === lastProduct){
             productsFinal = productsFinal + " and " + listProducts[i];
-        }
-        else if (listProducts[i] === penUltProduct) {
+
+        }else if (listProducts[i] === penUltProduct) {
             productsFinal = productsFinal + listProducts[i];
+
         }else{
             productsFinal = productsFinal + listProducts[i] + ", ";
         }
