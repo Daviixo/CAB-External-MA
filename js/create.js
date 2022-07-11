@@ -110,15 +110,26 @@ function createTemplate(){
 
     // We would like to thank you for your patience and understanding during this time period
 
-    var winPrint = window.open('MA', '', 'left=0,top=0,width=450,height=800,toolbar=0,scrollbars=0,status=0');
-    winPrint.document.write('<title>CAB - External MA</title><strong>CAB - External MA</strong><br><br>' + "<strong>" + fixedProducts + ' - Maintenance</strong><br><br>' + 
+    var winPrint = window.open('MA', '', 'left=0,top=0,width=650,height=500,toolbar=0,scrollbars=0,status=0');
+    winPrint.document.write('<!DOCTYPE html>' + 
+    '<head>' + '<style>' +
+    'pre, code{' + 
+        'font-family: "Lato", sans-serif;' + 
+        'font-size: medium;' +
+        'font-weight: bold;' +
+        'display:inline;' +
+    '}' +
+    '</style>' +
+    '<title>CAB - External MA</title></head><body>' + 
+    '<strong>CAB - External MA</strong><br><br>' + "<strong>" + fixedProducts + ' - Maintenance</strong><br><br>' + 
     'As part of our commitment to provide exceptional service and reliability to our customers, ' + fixedProducts + 
     ' will be conducting service maintenance on the following date and time listed below. Our team will be taking all appropriate actions to minimize' +
-    ' service interruptions during this event.<br><br>' + 
-    '<strong>Date and Time: </strong>' + maDate + '<br><br><strong>Purpose: </strong>This maintenance is to ensure and maintain system performance and stability.' +
-    '<br><br><strong>Duration: </strong>' + 'All maintenance will be performed within the ' + finalDowntime + ' maintenance window.' +
-    '<br><br><strong>What to expect: </strong>During the maintenance window ' + fixedProducts + ' customers will experience ' + getExpectation +
-    '<br><br>We would like to thank you for your patience and understanding during this time period.'
+    ' service interruptions during this event.' + 
+    '<p><pre>&ltb&gtDate and Time:&lt/b&gt</pre>' + " " + maDate +
+    '<p><pre>&ltb&gtPurpose:&lt/b&gt</pre> This maintenance is to ensure and maintain system performance and stability.' +
+    '<p><pre>&ltb&gtDuration:&lt/b&gt</pre> ' + 'All maintenance will be performed within the ' + finalDowntime + ' maintenance window.' +
+    '<p><pre>&ltb&gtWhat to expect:&lt/b&gt</pre> ' + ' During the maintenance window ' + fixedProducts + ' customers will experience ' + getExpectation +
+    '<br><br>We would like to thank you for your patience and understanding during this time period.</p></body></html>'
     );
 
 }
@@ -141,8 +152,11 @@ function timeConverter(minutes){
 
     if(minutes === 0){
         return rhours + "-hour";
-
-    }else{
+    }
+    else if(minutes <= 59){
+        return rminutes + "-minute";
+    }
+    else{
         return rhours + "-hour and " + rminutes + "-minute";
     }
 
@@ -173,3 +187,5 @@ function fixProducts(products){
     return productsFinal;
 
 }
+
+// `
