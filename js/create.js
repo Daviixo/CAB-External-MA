@@ -117,19 +117,19 @@ function createTemplate(){
         'font-family: "Lato", sans-serif;' + 
         'font-size: medium;' +
         'font-weight: bold;' +
-        'display:inline;' +
-        'white-space:normal;' +
+        'display: inline;' +
+        'white-space: pre;' +
     '}' +
     '</style>' +
     '<title>CAB - External MA</title></head><body>' + 
     '<strong>CAB - External MA</strong><br><br>' + "<strong>" + fixedProducts + ' - Maintenance</strong><br><br>' + 
     'As part of our commitment to provide exceptional service and reliability to our customers, ' + fixedProducts + 
     ' will be conducting service maintenance on the following date and time listed below. Our team will be taking all appropriate actions to minimize' +
-    ' service interruptions during this event.<br>' + 
-    '<p><pre>&ltb&gtDate and Time:&lt/b&gt</pre>' + " " + maDate + '<br>' +
-    '<p><pre>&ltb&gtPurpose:&lt/b&gt</pre> This maintenance is to ensure and maintain system performance and stability.<br>' +
-    '<p><pre>&ltb&gtDuration:&lt/b&gt</pre> ' + 'All maintenance will be performed within the ' + finalDowntime + ' maintenance window.<br>' +
-    '<p><pre>&ltb&gtWhat to expect:&lt/b&gt</pre> ' + ' During the maintenance window ' + fixedProducts + ' customers will experience ' + getExpectation +
+    ' service interruptions during this event.<br><br>' + 
+    '<pre>&ltb&gtDate and Time:&lt/b&gt</pre>' + " " + maDate + '<br><br>' +
+    '<pre>&ltb&gtPurpose:&lt/b&gt</pre> This maintenance is to ensure and maintain system performance and stability.<br><br>' +
+    '<pre>&ltb&gtDuration:&lt/b&gt</pre> ' + 'All maintenance will be performed within the ' + finalDowntime + ' maintenance window.<br><br>' +
+    '<pre>&ltb&gtWhat to expect:&lt/b&gt</pre> ' + ' During the maintenance window ' + fixedProducts + ' customers will experience ' + getExpectation +
     '<br><br>We would like to thank you for your patience and understanding during this time period.</p></body></html>'
     );
 
